@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liam Cowlin | Advertising</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #000000;
+            --white: #FFFFFF;
+            --gray: #666666;
+            --light-gray: #F5F5F5;
+            --accent: #2B6CB0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--black);
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.3rem;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--black);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.6;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 12rem 3rem 8rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--gray);
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--black);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 6rem 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 3rem;
+            letter-spacing: -1px;
+        }
+
+        .gray-bg {
+            background: var(--light-gray);
+        }
+
+        /* ABOUT */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: var(--gray);
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            padding: 2rem;
+            background: var(--white);
+            border: 1px solid #e5e5e5;
+        }
+
+        .stat h3 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* CAMPAIGNS */
+        .campaign-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 4rem;
+        }
+
+        .campaign-item {
+            background: var(--white);
+            border: 1px solid #e5e5e5;
+            padding: 3rem;
+            transition: all 0.3s ease;
+        }
+
+        .campaign-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .campaign-item .tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--black);
+            color: var(--white);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .campaign-item h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .campaign-item p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* PROJECTS */
+        .project-list {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .project {
+            padding: 2.5rem;
+            background: var(--white);
+            border-left: 4px solid var(--black);
+        }
+
+        .project h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .project p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* RESUME */
+        .resume-section {
+            text-align: center;
+        }
+
+        .resume-download {
+            display: inline-block;
+            padding: 1.5rem 3rem;
+            background: var(--accent);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .resume-download:hover {
+            background: var(--black);
+            transform: translateY(-2px);
+        }
+
+        .resume-preview {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 3rem;
+            background: var(--light-gray);
+            text-align: left;
+        }
+
+        .resume-preview h3 {
+            font-size: 1.3rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .resume-preview p {
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        /* CONTACT */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .contact-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .contact-item a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 3rem;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .about-content,
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .campaign-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 4rem 2rem;
+            }
+        }
+
+        /* SMOOTH SCROLL */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">LIAM COWLIN</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#campaigns">Campaigns</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Strategic.<br>Creative.<br>Results-Driven.</h1>
+        <p>Advertising & PR student at University of Nebraska-Lincoln. Building campaigns that connect brands with audiences.</p>
+        <a href="#campaigns" class="cta-button">View My Work</a>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="gray-bg">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I'm Liam Cowlin, a senior at the University of Nebraska-Lincoln pursuing a degree in Advertising & Public Relations with a minor in Business. From horticulture to journalism, my diverse academic journey has shaped my adaptability and creative problem-solving skills.</p>
+                
+                <p>I excel at being hardworking, adaptable, and creative—qualities I believe make me well-suited for the advertising industry. My background spans market research, strategic development, copywriting, and digital content creation. I've maintained a 3.35 GPA while being named to the Dean's List multiple times.</p>
+                
+                <p>Outside academics, I earned a varsity letter in hockey and played club hockey at the collegiate level. This competitive experience taught me teamwork, dedication, and how to perform under pressure—skills I bring to every project.</p>
+            </div>
+            
+            <div class="about-stats">
+                <div class="stat">
+                    <h3>3.35</h3>
+                    <p>GPA | Dean's List 3x</p>
+                </div>
+                <div class="stat">
+                    <h3>UNL</h3>
+                    <p>Class of 2026</p>
+                </div>
+                <div class="stat">
+                    <h3>Chicago</h3>
+                    <p>Target Market</p>
+                </div>
+                <div class="stat">
+                    <h3>Adobe</h3>
+                    <p>Creative Suite Pro</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAMPAIGNS -->
+    <section id="campaigns">
+        <h2>Advertising Campaigns</h2>
+        <div class="campaign-grid">
+            
+            <div class="campaign-item">
+                <span class="tag">Print Campaign</span>
+                <h3>Liquid Death: Stay in the Game</h3>
+                <p>Three-ad print campaign addressing Liquid Death's unconventional branding challenge. Embraced their anti-establishment energy while introducing hydration benefits through a "stay in the game" message. Kept classic Liquid Death edge while delivering product education.</p>
+            </div>
+
+            <div class="campaign-item">
+                <span class="tag">Multi-Channel</span>
+                <h3>Dollar General: 12 Days of Dash Gifts</h3>
+                <p>Holiday campaign repositioning Dollar General as an unexpected premium gifting destination. Multi-channel activation including social media countdowns, outdoor billboards, and transit wraps. Featured trusted brands (Yankee Candle, E.L.F., Hot Wheels) to combat low-quality perception.</p>
+            </div>
+
+            <div class="campaign-item">
+                <span class="tag">Young Ones Entry</span>
+                <h3>Walmart: #GotItFromWalmart</h3>
+                <p>2026 Young Ones Student Awards entry tackling college student perception of Walmart. Social and experiential campaign empowering students to showcase their style using Walmart finds. Included exclusive student discounts and campus card drops to make affordable style feel personal and shareable.</p>
+            </div>
+
+            <div class="campaign-item">
+                <span class="tag">Original Concept</span>
+                <h3>Fields & Feelings Concert Series</h3>
+                <p>Traveling concert series bringing live music to overlooked rural Midwest communities. Transforms barns, farmyards, and Main Streets into vibrant stages featuring national and local talent. Making every small town a place worth gathering.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="gray-bg">
+        <h2>Class Projects</h2>
+        <div class="project-list">
+            
+            <div class="project">
+                <h3>Creative Brief & TV Storyboard</h3>
+                <p>Developed comprehensive creative brief for Arbor Day Foundation wildfire relief campaign. Created mock TV storyboard and 30-second commercial script showcasing foundation's reforestation efforts and impact.</p>
+            </div>
+
+            <div class="project">
+                <h3>Teva Footwear Print Advertisement</h3>
+                <p>Full-page magazine advertisement for Teva's gender-neutral initiative rebrand. Showcased commitment to gender inclusivity while focusing on redesigned website and new product sizing. Multiple revision rounds refined generic descriptions into memorable brand messaging.</p>
+            </div>
+
+            <div class="project">
+                <h3>Paperless Post Media Pitch</h3>
+                <p>Emulated Associate Director of Media Relations role to secure CBS News Sunday Morning feature story. Conducted research to identify best media fit, created persuasive pitch demonstrating value alignment and storytelling opportunity.</p>
+            </div>
+
+            <div class="project">
+                <h3>Chewy Social Media Campaign</h3>
+                <p>Marketing specialist role promoting Ultimutt Dog De-Stresser. Series of Instagram stories and posts offering practical anxiety-reduction tips while minimizing product mentions. Included creative brief outlining strategy and messaging.</p>
+            </div>
+
+            <div class="project">
+                <h3>Omaha Zoo Blog Post</h3>
+                <p>Announced birth of new baby panda to engage readers and attract visitors. Incorporated SEO elements, multimedia, and calls-to-action linking to zoo website and social channels for greater reach.</p>
+            </div>
+
+            <div class="project">
+                <h3>UNL Pilot Program News Release</h3>
+                <p>AP Style news release announcing University of Nebraska-Lincoln pilot program. Ensured clarity, accuracy, and media-ready format to communicate program details and impact to target audiences.</p>
+            </div>
+
+            <div class="project">
+                <h3>Arbor Day Foundation TV Commercial</h3>
+                <p>Revised creative brief and developed 30-second advertisement script for wildfire reforestation campaign. Aligned content with target audience, strategy, and tone from creative brief insights.</p>
+            </div>
+
+            <div class="project">
+                <h3>Nebraska Quarterly Magazine Story</h3>
+                <p>Feature story for UNL alumni publication highlighting university innovation. Interviewed sources to gather information and quotes, creating engaging narrative that encourages alumni connection and involvement.</p>
+            </div>
+
+            <div class="project">
+                <h3>IMC Campaign: Ruth Staples Child Development Lab</h3>
+                <p>Collaborative integrated marketing communications project. Worked with team and RSCDL staff to conduct research, develop strategy, and create comprehensive campaign with multiple touchpoints.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- RESUME -->
+    <section id="resume" class="resume-section">
+        <h2>Resume</h2>
+        <p style="max-width: 600px; margin: 0 auto 2rem; color: var(--gray);">Download my full resume to see my experience, skills, and academic achievements in detail.</p>
+        
+        <a href="#" class="resume-download" download>Download Resume (PDF)</a>
+
+        <div class="resume-preview">
+            <h3>Experience</h3>
+            <p><strong>Customer Insight NOW</strong> — Marketing Intern (Jan 2025 – May 2025)</p>
+            <p>Market research, competitive analysis, digital marketing content, brand positioning</p>
+
+            <p><strong>Sandhills Global</strong> — Sales Intern (Summer 2025)</p>
+            <p>B2B marketplaces, account management, campaign strategy, client engagement</p>
+
+            <h3>Education</h3>
+            <p><strong>University of Nebraska-Lincoln</strong> — B.J.M.C. Advertising & PR, Minor: Business</p>
+            <p>GPA: 3.35 | Dean's List: Spring 2023, Fall 2024, Spring 2025</p>
+
+            <h3>Skills</h3>
+            <p>Adobe Creative Cloud (Photoshop, Illustrator, InDesign, Premiere), Market Research, Campaign Strategy, Digital Content Creation, Brand Messaging, CRM Tools, Data Analysis, Presentation Skills</p>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="gray-bg">
+        <h2>Let's Connect</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <h3>Email</h3>
+                <a href="mailto:Lcowlin2@huskers.unl.edu">Lcowlin2@huskers.unl.edu</a>
+            </div>
+            <div class="contact-item">
+                <h3>Phone</h3>
+                <a href="tel:8479755029">(847) 975-5029</a>
+            </div>
+            <div class="contact-item">
+                <h3>LinkedIn</h3>
+                <a href="http://www.linkedin.com/in/liam-cowlin-832044300" target="_blank">View Profile</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2025 Liam Cowlin. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
